@@ -1,0 +1,37 @@
+name: "AWS S3 Static Website creation"
+description: "GitHub Action to create a bucket for static website on AWS S3"
+author: "Yuri Zinkovets"
+
+inputs:
+  aws_region:
+    description: "AWS region"
+    required: true
+  aws_access_key_id:
+    description: "AWS Access Key ID"
+    required: true
+  aws_secret_access_key:
+    description: "AWS Secret Access Key"
+    required: true
+  domain:
+    description: "Domain name"
+    required: true
+  index_document:
+    description: "Index document"
+    required: false
+    default: "index.html"
+  error_document:
+    description: "Error document"
+    required: false
+    default: "index.html"
+
+outputs:
+  website_url:
+    description: "The S3 static website URL"
+    
+runs:
+  using: "docker"
+  image: "docker://yzinkovets/github-actions-aws-s3-static-website:v1"
+
+branding:
+  icon: "cloud"
+  color: "blue"
